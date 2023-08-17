@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.*;
 
 public class TransactionStatus {
 
-    //approval code generation and status code generation...
     String status;
 
 
-    public ResponseEntity<TransactionStatus> getStatus() {
+    public ResponseEntity<TransactionStatus> getStatus()
+    {
         return new ResponseEntity<TransactionStatus>(HttpStatus.OK);
     }
+
+
+
+
+
 
 }

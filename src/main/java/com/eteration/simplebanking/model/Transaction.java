@@ -2,6 +2,7 @@ package com.eteration.simplebanking.model;
 
 
 import com.eteration.simplebanking.Utilities.TransactionType;
+import org.springframework.http.HttpStatus;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,17 +20,22 @@ public abstract class Transaction {
     Double amount;
     TransactionType type;
     String approvalCode;
-    String accountNumber;
+    String  accountNumber;
+    HttpStatus transactionStatus;
 
-    public Transaction() {
+    public Transaction() {}
 
+
+    public Transaction(String approvalCode) {
+        this.approvalCode = approvalCode;
     }
 
 
     @Override
     public String toString() {
-        return "Transaction{" +
-                " amount='" + amount.toString() + '\'' +
+        return "{" + '\n' +
+                "  status:" + getTransactionStatus().name() + "," + '\n' +
+                "  approvalCode:" + getApprovalCode() + '\n' +
                 '}';
     }
 
@@ -66,13 +72,18 @@ public abstract class Transaction {
         this.approvalCode = approvalCode;
     }
 
-    public String getAccountID() {
-        return accountNumber;
+    public String getAccountID() {return accountNumber;}
+
+    public void setAccountID(String accountNumber) { this.accountNumber = accountNumber;}
+
+    public HttpStatus getTransactionStatus() {
+        return transactionStatus;
     }
 
-    public void setAccountID(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setTransactionStatus(HttpStatus transactionStatus) {
+        this.transactionStatus = transactionStatus;
     }
+
 
 
 }

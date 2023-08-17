@@ -2,6 +2,8 @@ package com.eteration.simplebanking.model;
 
 import com.eteration.simplebanking.Utilities.TransactionType;
 
+import java.time.LocalDateTime;
+
 public class BillPaymentTransaction extends WithdrawalTransaction {
 
     String payee;
@@ -10,6 +12,7 @@ public class BillPaymentTransaction extends WithdrawalTransaction {
     public BillPaymentTransaction(String payee, String description, double amount) {
         this.amount = amount;
         this.type = TransactionType.BILLPAYMENT;
+
     }
 
     public String getPayee() {

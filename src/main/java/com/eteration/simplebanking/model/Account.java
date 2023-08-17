@@ -13,11 +13,13 @@ public class Account {
     private String accountNumber;
     private String owner;
     private Double balance = 0.0;
+    LocalDateTime createDate;
     @OneToMany(targetEntity = Transaction.class)
     private List<Transaction> transactions;
 
     //default constructor
     public Account() {
+        this.createDate = LocalDateTime.now();
     }
 
     //overloaded the constructor to have owner and account number on initialization and set balance to 0.0
@@ -25,6 +27,8 @@ public class Account {
         setOwner(_owner);
         setAccountNumber(_accountNumber);
         setBalance(0.0);
+        this.createDate=LocalDateTime.now();
+
     }
 
     //this function I saw on the tests, that is why I added
@@ -81,5 +85,14 @@ public class Account {
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
 
 }

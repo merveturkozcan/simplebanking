@@ -1,0 +1,10 @@
+curl --location 'http://localhost:8080/account/v1/debit/121?Content-Type=application%2Fjson&Accept=application%2Fjson&=null' \
+--header 'Content-Type: application/json' \
+--data '{
+    "amount" : 150.0
+}
+
+{
+  status:OK,
+  approvalCode:57a19a72-ba47-4e87-a565-1889d2967c51
+}
